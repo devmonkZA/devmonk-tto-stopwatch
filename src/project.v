@@ -21,7 +21,7 @@ assign uio_out = 0;
 assign uio_in = 0;
 assign uio_oe  = 0;
 assign ena = 0;
-assign rst_n = 0
+assign rst_n = 0;
 
 // 7 segment control line bus
 wire [7:0] seven_segment;
