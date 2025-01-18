@@ -49,8 +49,8 @@ reg [4:0] lap_timeout = 0;
 
 // Clock divider and pulse registers
 reg [20:0] clkdiv = 0;
-reg clkdiv_pulse = 0;
-reg running = 0;
+reg [4:0] clkdiv_pulse = 0;
+reg [4:0] running = 0;
 
 // Synchronous logic
 always @(posedge CLK) begin
