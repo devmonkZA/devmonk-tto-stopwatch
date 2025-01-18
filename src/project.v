@@ -18,10 +18,10 @@ module tt_um_devmonk_stopwatch (
 
 //All output pins must be assigned. If not used, assign to 0.
 //assign uio_out = 0;
-//assign uio_in = 0;
-//assign uio_oe  = 0;
-//assign ena = 0;
-//assign rst_n = 0;
+assign uio_in = unused;
+assign uio_oe  = unused;
+assign ena = unused;
+assign rst_n = unused;
 
 // 7 segment control line bus
 wire [7:0] seven_segment;
@@ -37,14 +37,10 @@ assign CLK = clk;
 assign BTN0 = ui_in[0];
 assign BTN1 = ui_in[1];
 assign BTN2 = ui_in[2];
-assign BTN3 = ui_in[3];
 
 // Display value register and increment bus
 reg [7:0] display_value = 0;
 wire [7:0] display_value_inc;
-
-// Lap registers
-reg [7:0] lap_value = 0;
 
 // Clock divider and pulse registers
 reg [20:0] clkdiv = 0;
@@ -76,11 +72,11 @@ always @(posedge CLK) begin
 		running <= 0;
 	end
 
-	if (BTN3) begin
+	if (BTN1) begin
 		running <= 1;
 	end
 
-	if (BTN1) begin
+	if (BTN2) begin
 		running <= 0;
 	end
 
