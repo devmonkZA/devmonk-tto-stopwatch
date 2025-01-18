@@ -17,7 +17,7 @@ module tt_um_devmonk_stopwatch (
 );
 
 // List all unused inputs to prevent warnings
-wire _unused = ena,ui_in[7:4],uio_in,rst_n;
+wire _unused = ena,rst_n;
 
 // 7 segment control line bus
 wire [7:0] seven_segment;
