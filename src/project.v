@@ -16,12 +16,11 @@ module tt_um_devmonk_stopwatch (
     input  wire       rst_n     // reset_n - low to reset
 );
 
-//All output pins must be assigned. If not used, assign to 0.
-//assign uio_out = 0;
-//assign uio_in = unused;
-//assign uio_oe  = unused;
-assign ena = 0;
-assign rst_n = 0;
+// List all unused inputs to prevent warnings
+wire _unused = ena; 
+wire _unused = ui_in[7:4]; 
+wire _unused = uio_in; 
+wire _unused = rst_n;
 
 // 7 segment control line bus
 wire [7:0] seven_segment;
