@@ -27,6 +27,9 @@ assign rst_n = 0;
 wire [7:0] seven_segment;
 wire CLK;
 wire BTN0;
+wire BTN1;
+wire BTN2;
+wire BTN3;
 
 // Assign 7 segment control line bus to Pmod pins
 assign { uo_out[0], uo_out[1], uo_out[2], uo_out[3], uo_out[4], uo_out[5], uo_out[6], uo_out[7] } = seven_segment;
