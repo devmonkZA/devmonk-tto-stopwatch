@@ -65,14 +65,14 @@ always @(posedge CLK) begin
 
 	// Lap timeout counter
 	if (clkdiv_pulse) begin
-    if lap_timeout) begin
+    if (lap_timeout) begin
 		  lap_timeout <= lap_timeout - 1;
     end;  
 	end
 
 	// Timer counter
 	if (clkdiv_pulse) begin
-    if () running) begin
+    if (running) begin
 		  display_value <= display_value_inc;
     end;  
 	end
