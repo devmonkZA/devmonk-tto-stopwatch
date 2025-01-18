@@ -18,14 +18,16 @@ module tt_um_devmonk_stopwatch (
 
 //All output pins must be assigned. If not used, assign to 0.
 assign uio_out = 0;
+assign uio_in = 0;
 assign uio_oe  = 0;
+assign ena = 0;
+assign rst_n = 0
 
 // 7 segment control line bus
 wire [7:0] seven_segment;
 
 // Assign 7 segment control line bus to Pmod pins
 assign { uo_out[0], uo_out[1], uo_out[2], uo_out[3], uo_out[4], uo_out[5], uo_out[6], uo_out[7] } = seven_segment;
-assign clk = CLK;
 assign ui_in[0] = BTN0;
 assign ui_in[1] = BTN1;
 assign ui_in[2] = BTN2;
@@ -45,7 +47,7 @@ reg clkdiv_pulse = 0;
 reg running = 0;
 
 // Synchronous logic
-always @(posedge CLK) begin
+always @(posedge clk) begin
 	// Clock divider pulse generator
 	if (clkdiv == 1200000) begin
 		clkdiv <= 0;
@@ -94,7 +96,7 @@ bcd8_increment bot_inc (
 
 // 7 segment display control
 seven_seg_ctrl seven_segment_ctrl (
-	.CLK(CLK),
+	.CLK(clk),
 	.din(lap_timeout ? lap_value[7:0] : display_value[7:0]),
 	.dout(seven_segment)
 );
