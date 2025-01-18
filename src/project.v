@@ -20,8 +20,8 @@ module tt_um_devmonk_stopwatch (
 //assign uio_out = 0;
 //assign uio_in = unused;
 //assign uio_oe  = unused;
-assign ena = 0;
-assign rst_n = 0;
+assign ena = 0'b1;
+assign rst_n = 0'b1;
 
 // 7 segment control line bus
 wire [7:0] seven_segment;
