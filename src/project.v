@@ -18,10 +18,10 @@ module tt_um_devmonk_stopwatch (
 
 //All output pins must be assigned. If not used, assign to 0.
 //assign uio_out = 0;
-assign uio_in = unused;
-assign uio_oe  = unused;
-assign ena = unused;
-assign rst_n = unused;
+//assign uio_in = unused;
+//assign uio_oe  = unused;
+assign ena = 0;
+assign rst_n = 0;
 
 // 7 segment control line bus
 wire [7:0] seven_segment;
