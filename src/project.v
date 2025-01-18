@@ -49,8 +49,8 @@ reg [4:0] lap_timeout = 0;
 
 // Clock divider and pulse registers
 reg [20:0] clkdiv = 0;
-reg [4:0] clkdiv_pulse = 0;
-reg [4:0] running = 0;
+reg clkdiv_pulse = 0;
+reg running = 0;
 
 // Synchronous logic
 always @(posedge CLK) begin
@@ -64,13 +64,17 @@ always @(posedge CLK) begin
 	end
 
 	// Lap timeout counter
-	if (clkdiv_pulse && lap_timeout) begin
-		lap_timeout <= lap_timeout - 1;
+	if (clkdiv_pulse) begin
+    if lap_timeout) begin
+		  lap_timeout <= lap_timeout - 1;
+    end;  
 	end
 
 	// Timer counter
-	if (clkdiv_pulse && running) begin
-		display_value <= display_value_inc;
+	if (clkdiv_pulse) begin
+    if () running) begin
+		  display_value <= display_value_inc;
+    end;  
 	end
 
 	// Button controls
