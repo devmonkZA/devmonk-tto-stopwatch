@@ -45,7 +45,6 @@ wire [7:0] display_value_inc;
 
 // Lap registers
 reg [7:0] lap_value = 0;
-reg [4:0] lap_timeout = 0;
 
 // Clock divider and pulse registers
 reg [20:0] clkdiv = 0;
@@ -63,12 +62,6 @@ always @(posedge CLK) begin
 		clkdiv_pulse <= 0;
 	end
 
-	// Lap timeout counter
-	if (clkdiv_pulse) begin
-    if (lap_timeout) begin
-		  lap_timeout <= lap_timeout - 1;
-    end;  
-	end
 
 	// Timer counter
 	if (clkdiv_pulse) begin
@@ -81,7 +74,6 @@ always @(posedge CLK) begin
 	if (BTN0) begin
 		display_value <= 0;
 		running <= 0;
-		lap_timeout <= 0;
 	end
 
 	if (BTN3) begin
@@ -92,10 +84,6 @@ always @(posedge CLK) begin
 		running <= 0;
 	end
 
-	if (BTN2) begin
-		lap_value <= display_value;
-		lap_timeout <= 20;
-	end
 end
 
 // BCD counter
