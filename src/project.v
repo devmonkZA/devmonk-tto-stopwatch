@@ -28,10 +28,11 @@ wire [7:0] seven_segment;
 
 // Assign 7 segment control line bus to Pmod pins
 assign { uo_out[0], uo_out[1], uo_out[2], uo_out[3], uo_out[4], uo_out[5], uo_out[6], uo_out[7] } = seven_segment;
-assign ui_in[0] = BTN0;
-assign ui_in[1] = BTN1;
-assign ui_in[2] = BTN2;
-assign ui_in[3] = BTN3;
+assign CLK = clk;
+assign BTN0 = ui_in[0];
+assign BTN1 = ui_in[1];
+assign BTN2 = ui_in[2];
+assign BTN3 = ui_in[3];
 
 // Display value register and increment bus
 reg [7:0] display_value = 0;
@@ -47,7 +48,7 @@ reg clkdiv_pulse = 0;
 reg running = 0;
 
 // Synchronous logic
-always @(posedge clk) begin
+always @(posedge CLK) begin
 	// Clock divider pulse generator
 	if (clkdiv == 1200000) begin
 		clkdiv <= 0;
@@ -96,7 +97,7 @@ bcd8_increment bot_inc (
 
 // 7 segment display control
 seven_seg_ctrl seven_segment_ctrl (
-	.CLK(clk),
+	.CLK(CLK),
 	.din(lap_timeout ? lap_value[7:0] : display_value[7:0]),
 	.dout(seven_segment)
 );
