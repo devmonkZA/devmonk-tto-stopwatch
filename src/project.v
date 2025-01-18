@@ -95,7 +95,7 @@ bcd8_increment bot_inc (
 // 7 segment display control
 seven_seg_ctrl seven_segment_ctrl (
 	.CLK(CLK),
-	.din(lap_timeout ? lap_value[7:0] : display_value[7:0]),
+	.din(display_value[7:0]),
 	.dout(seven_segment)
 );
 
